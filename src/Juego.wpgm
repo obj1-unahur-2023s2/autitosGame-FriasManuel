@@ -1,0 +1,39 @@
+import wollok.game.*
+import autos.*
+
+program juego {
+	
+	//configurar el tablero
+	game.height(12)
+	game.width(12)
+	game.title("Hermoso Juego")
+	game.ground("paredLadrillo3.jpg")//no hay que poner ruta porque la toma como de la misma carpeta del codigo fuente
+	
+	//----Agregar el corsa al tablero
+	//corsa.position(game.origin())
+	//corsa.position(game.center())
+	corsa.position(game.at(0.randomUpTo(game.width().truncate(0)), 0.randomUpTo(game.height().truncate(0))))
+	game.addVisual(corsa)
+	//----Agregar el kwid al tablero
+	//kwid.position(game.origin())
+	//kwid.position(game.center())
+	kwid.position(game.at(0.randomUpTo(game.width().truncate(0)), 0.randomUpTo(game.height().truncate(0))))
+	game.addVisual(kwid)
+	
+	//para configurar los botones del teclado
+	keyboard.up().onPressDo({ 
+		corsa.arriba()
+	})
+	keyboard.down().onPressDo({
+		corsa.abajo()
+	})
+	keyboard.left().onPressDo({
+		corsa.izquierda()
+	})
+	keyboard.right().onPressDo({
+		corsa.derecha()
+	})
+	//efecto pacman
+	
+	game.start()
+}
